@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iOS - Apple (ID) - Mockup</title>
+  <style>
+    :root {
+      --bg: #fff;
+      --text: #1d1d1f;
+      --secondary: #6e6e73;
+      --accent: #0071e3;
+      --placeholder-bg: #f5f5f7;
+      --border: #d2d2d7;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* Global Nav */
+    .globalnav {
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: saturate(180%) blur(20px);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      border-bottom: 1px solid var(--border);
+    }
+    .globalnav-content {
+      max-width: 980px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 22px;
+      height: 44px;
+    }
+    .globalnav-list {
+      display: flex;
+      list-style: none;
+      gap: 24px;
+      font-size: 12px;
+      color: var(--text);
+    }
+    .globalnav-list li { cursor: pointer; opacity: 0.8; }
+    .globalnav-list li:hover { opacity: 1; }
+    .logo-placeholder {
+      width: 14px; height: 14px; border-radius: 50%;
+      background: var(--placeholder-bg);
+      display: inline-block;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 80px 22px 40px;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+    .hero h1 {
+      font-size: 56px;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      margin-bottom: 8px;
+    }
+    .hero p {
+      font-size: 24px;
+      color: var(--secondary);
+      margin-bottom: 24px;
+    }
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+    .btn {
+      padding: 12px 24px;
+      border-radius: 980px;
+      font-size: 17px;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+    }
+    .img-placeholder {
+      background: var(--placeholder-bg);
+      border-radius: 18px;
+      width: 100%;
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #86868b;
+      font-size: 14px;
+    }
+
+    /* Features */
+    .features {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 60px 22px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+    }
+    .feature-card {
+      background: #fff;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+    .feature-card .img-placeholder {
+      min-height: 200px;
+      border-radius: 18px 18px 0 0;
+    }
+    .feature-card-content {
+      padding: 24px;
+    }
+    .feature-card h3 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .feature-card p {
+      color: var(--secondary);
+      font-size: 15px;
+    }
+
+    /* Compatibility */
+    .compatibility {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 60px 22px;
+      text-align: center;
+    }
+    .compatibility h2 {
+      font-size: 40px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .device-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .device-item .img-placeholder {
+      min-height: 120px;
+      margin-bottom: 12px;
+    }
+    .device-item p {
+      font-size: 14px;
+      color: var(--secondary);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--placeholder-bg);
+      padding: 40px 22px;
+      font-size: 12px;
+      color: var(--secondary);
+      margin-top: 60px;
+    }
+    .footer-content {
+      max-width: 980px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: space-between;
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      list-style: none;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 40px; }
+      .hero p { font-size: 20px; }
+      .globalnav-list { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Global Nav -->
+  <nav class="globalnav">
+    <div class="globalnav-content">
+      <div class="logo-placeholder" title="Logo Apple (placeholder)"></div>
+      <ul class="globalnav-list">
+        <li>Apple</li>
+        <li>Mac</li>
+        <li>iPad</li>
+        <li>iPhone</li>
+        <li>Watch</li>
+        <li>Vision</li>
+        <li>AirPods</li>
+        <li>TV & Home</li>
+        <li>Hiburan</li>
+        <li>Aksesori</li>
+        <li>Dukungan</li>
+      </ul>
+      <div style="display:flex; gap:16px;">
+        <span>🔍</span>
+        <span>🛍️</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>iOS 27</h1>
+    <p>Pratinjau. Kecerdasan yang lebih personal.</p>
+    <div class="hero-buttons">
+      <button class="btn btn-primary">Pelajari lebih lanjut</button>
+      <button class="btn btn-secondary">Lihat kompatibilitas</button>
+    </div>
+    <!-- Gambar hero dikosongkan -->
+    <div class="img-placeholder" style="min-height:400px;"></div>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <div class="feature-card">
+      <div class="img-placeholder"></div>
+      <div class="feature-card-content">
+        <h3>Siri AI</h3>
+        <p>Asisten yang lebih pintar, memahami konteks dan membantu keseharian Anda.</p>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="img-placeholder"></div>
+      <div class="feature-card-content">
+        <h3>Apple Intelligence</h3>
+        <p>Privasi tetap terjaga dengan pemrosesan on-device dan cloud yang aman.</p>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="img-placeholder"></div>
+      <div class="feature-card-content">
+        <h3>Kustomisasi</h3>
+        <p>Personalisi layar kunci, widget, dan ikon sesuai gaya Anda.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Compatibility -->
+  <section class="compatibility">
+    <h2>Kompatibel dengan</h2>
+    <p>iPhone yang mendukung iOS 27.</p>
+    <div class="device-grid">
+      <div class="device-item">
+        <div class="img-placeholder"></div>
+        <p>iPhone 16 Pro</p>
+      </div>
+      <div class="device-item">
+        <div class="img-placeholder"></div>
+        <p>iPhone 16</p>
+      </div>
+      <div class="device-item">
+        <div class="img-placeholder"></div>
+        <p>iPhone 15</p>
+      </div>
+      <div class="device-item">
+        <div class="img-placeholder"></div>
+        <p>iPhone 14</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div>Hak cipta © 2026 Apple Inc. Semua hak dilindungi.</div>
+      <ul class="footer-links">
+        <li>Kebijakan Privasi</li>
+        <li>Ketentuan Penggunaan</li>
+        <li>Peta Situs</li>
+      </ul>
+    </div>
+  </footer>
+
+</body>
+</html>
