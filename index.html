@@ -1,888 +1,254 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Voyage AI — Mockup</title>
-<style>
-  :root {
-    --bg: #0a0a0a;
-    --bg-alt: #111214;
-    --card: #16181b;
-    --border: #23262b;
-    --text: #f5f5f7;
-    --muted: #8a8f98;
-    --accent: #5b8def;
-    --accent-2: #a78bfa;
-    --code-bg: #0d0f12;
-    --placeholder: #1c1f24;
-  }
-  body.light {
-    --bg: #ffffff;
-    --bg-alt: #f7f8fa;
-    --card: #ffffff;
-    --border: #e5e7eb;
-    --text: #0a0a0a;
-    --muted: #6b7280;
-    --accent: #3b6fe0;
-    --accent-2: #7c5cf5;
-    --code-bg: #f3f4f6;
-    --placeholder: #eef0f3;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    transition: background .3s, color .3s;
-    overflow-x: hidden;
-  }
-  a { color: inherit; text-decoration: none; }
-
-  /* ============ NAV ============ */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    background: color-mix(in srgb, var(--bg) 80%, transparent);
-    backdrop-filter: saturate(180%) blur(20px);
-    border-bottom: 1px solid var(--border);
-    animation: navIn .7s cubic-bezier(.22,1,.36,1) both;
-  }
-  @keyframes navIn {
-    from { transform: translateY(-100%); }
-    to   { transform: translateY(0); }
-  }
-  .nav-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
-    height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 600;
-    font-size: 17px;
-    letter-spacing: -0.01em;
-  }
-  .logo-mark {
-    width: 26px; height: 26px;
-    border-radius: 7px;
-    background: linear-gradient(135deg, var(--accent), var(--accent-2));
-    display: grid;
-    place-items: center;
-    color: #fff;
-    font-size: 13px;
-    font-weight: 700;
-  }
-  .nav-links {
-    display: flex;
-    gap: 32px;
-    font-size: 14px;
-    color: var(--muted);
-    list-style: none;
-  }
-  .nav-links li a { transition: color .2s; }
-  .nav-links li a:hover { color: var(--text); }
-  .nav-right { display: flex; align-items: center; gap: 12px; }
-  .theme-btn {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text);
-    width: 36px; height: 36px;
-    border-radius: 10px;
-    cursor: pointer;
-    display: grid;
-    place-items: center;
-    font-size: 15px;
-    transition: background .2s, transform .2s;
-  }
-  .theme-btn:hover { background: var(--bg-alt); transform: rotate(15deg); }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 9px 18px;
-    border-radius: 10px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    border: none;
-    transition: transform .15s, opacity .2s, background .2s;
-    white-space: nowrap;
-  }
-  .btn:hover { transform: translateY(-1px); }
-  .btn-primary { background: var(--text); color: var(--bg); }
-  .btn-primary:hover { opacity: .88; }
-  .btn-ghost {
-    background: transparent;
-    color: var(--text);
-    border: 1px solid var(--border);
-  }
-  .btn-ghost:hover { background: var(--bg-alt); }
-  .btn-accent {
-    background: linear-gradient(135deg, var(--accent), var(--accent-2));
-    color: #fff;
-  }
-
-  /* ============ HERO ============ */
-  .hero {
-    position: relative;
-    padding: 160px 24px 100px;
-    text-align: center;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: "";
-    position: absolute;
-    top: -20%; left: 50%;
-    transform: translateX(-50%);
-    width: 900px; height: 900px;
-    background: radial-gradient(circle, color-mix(in srgb, var(--accent) 25%, transparent) 0%, transparent 60%);
-    filter: blur(60px);
-    z-index: 0;
-    pointer-events: none;
-    animation: glowPulse 6s ease-in-out infinite;
-  }
-  @keyframes glowPulse {
-    0%, 100% { opacity: .8; transform: translateX(-50%) scale(1); }
-    50% { opacity: 1; transform: translateX(-50%) scale(1.08); }
-  }
-  .hero-inner {
-    position: relative;
-    z-index: 1;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-  .hero-inner > * {
-    opacity: 0;
-    transform: translateY(24px);
-    animation: heroIn .9s cubic-bezier(.22,1,.36,1) forwards;
-  }
-  .hero-inner > *:nth-child(1) { animation-delay: .15s; }
-  .hero-inner > *:nth-child(2) { animation-delay: .3s; }
-  .hero-inner > *:nth-child(3) { animation-delay: .45s; }
-  .hero-inner > *:nth-child(4) { animation-delay: .6s; }
-  .hero-inner > *:nth-child(5) { animation-delay: .75s; }
-  @keyframes heroIn {
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 14px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    font-size: 13px;
-    color: var(--muted);
-    margin-bottom: 28px;
-  }
-  .badge-dot {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    background: #22c55e;
-    box-shadow: 0 0 8px #22c55e;
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: .4; }
-  }
-  .hero h1 {
-    font-size: clamp(40px, 6vw, 72px);
-    font-weight: 600;
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-    margin-bottom: 24px;
-  }
-  .hero h1 .grad {
-    background: linear-gradient(135deg, var(--accent), var(--accent-2));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .hero p {
-    font-size: clamp(16px, 2vw, 20px);
-    color: var(--muted);
-    max-width: 640px;
-    margin: 0 auto 40px;
-  }
-  .hero-actions {
-    display: flex;
-    justify-content: center;
-    gap: 14px;
-    flex-wrap: wrap;
-    margin-bottom: 80px;
-  }
-
-  /* ============ MEDIA PLACEHOLDER ============ */
-  .media {
-    width: 100%;
-    border-radius: 18px;
-    background: var(--placeholder);
-    border: 1px solid var(--border);
-    display: grid;
-    place-items: center;
-    color: var(--muted);
-    font-size: 14px;
-    overflow: hidden;
-    position: relative;
-    transition: border-color .3s;
-  }
-  .media:hover { border-color: color-mix(in srgb, var(--accent) 40%, var(--border)); }
-  .media::after {
-    content: attr(data-label);
-    position: absolute;
-    bottom: 12px; left: 14px;
-    font-size: 12px;
-    color: var(--muted);
-    opacity: .7;
-  }
-  .media-hero {
-    aspect-ratio: 16 / 9;
-    max-width: 1000px;
-    margin: 0 auto;
-    border-radius: 20px;
-    box-shadow: 0 30px 80px -20px rgba(0,0,0,.5);
-  }
-  .media-icon {
-    font-size: 40px;
-    opacity: .35;
-    animation: floatY 4s ease-in-out infinite;
-  }
-  @keyframes floatY {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
-  }
-
-  /* ============ LOGOS ============ */
-  .logos {
-    padding: 60px 24px;
-    text-align: center;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-  .logos p {
-    font-size: 13px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: .12em;
-    margin-bottom: 32px;
-  }
-  .logos-grid {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 24px;
-    align-items: center;
-  }
-  .logo-ph {
-    height: 32px;
-    border-radius: 6px;
-    background: var(--placeholder);
-    border: 1px solid var(--border);
-    display: grid;
-    place-items: center;
-    font-size: 11px;
-    color: var(--muted);
-    opacity: .7;
-    transition: opacity .3s, transform .3s;
-  }
-  .logo-ph:hover { opacity: 1; transform: scale(1.05); }
-
-  /* ============ SECTION ============ */
-  section.block {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 100px 24px;
-  }
-  .section-head {
-    text-align: center;
-    max-width: 680px;
-    margin: 0 auto 60px;
-  }
-  .section-head .eyebrow {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: .12em;
-    margin-bottom: 16px;
-  }
-  .section-head h2 {
-    font-size: clamp(30px, 4vw, 48px);
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    line-height: 1.15;
-    margin-bottom: 16px;
-  }
-  .section-head p { color: var(--muted); font-size: 17px; }
-
-  /* ============ FEATURES ============ */
-  .features {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-  }
-  .feature {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 28px;
-    transition: transform .25s, border-color .25s;
-  }
-  .feature:hover {
-    transform: translateY(-4px);
-    border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
-  }
-  .feature-icon {
-    width: 44px; height: 44px;
-    border-radius: 12px;
-    background: color-mix(in srgb, var(--accent) 15%, transparent);
-    border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
-    display: grid;
-    place-items: center;
-    font-size: 20px;
-    margin-bottom: 20px;
-  }
-  .feature h3 {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 8px;
-    letter-spacing: -0.01em;
-  }
-  .feature p { font-size: 14.5px; color: var(--muted); line-height: 1.6; }
-
-  /* ============ SPLIT ============ */
-  .split {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-    margin-bottom: 100px;
-  }
-  .split:last-child { margin-bottom: 0; }
-  .split.reverse .split-media { order: 2; }
-  .split-text .eyebrow {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: .12em;
-    margin-bottom: 14px;
-  }
-  .split-text h3 {
-    font-size: clamp(26px, 3vw, 36px);
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    line-height: 1.2;
-    margin-bottom: 18px;
-  }
-  .split-text p { color: var(--muted); font-size: 16px; margin-bottom: 24px; }
-  .split-text ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .split-text li {
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-    font-size: 15px;
-    color: var(--text);
-  }
-  .split-text li::before {
-    content: "✓";
-    color: var(--accent);
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-  .split-media .media { aspect-ratio: 4 / 3; }
-
-  /* ============ CODE ============ */
-  .code-section {
-    background: var(--bg-alt);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: 100px 24px;
-  }
-  .code-grid {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 60px;
-    align-items: center;
-  }
-  .code-text h2 {
-    font-size: clamp(28px, 3.5vw, 42px);
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    line-height: 1.15;
-    margin-bottom: 18px;
-  }
-  .code-text p { color: var(--muted); font-size: 16px; margin-bottom: 28px; }
-  .code-window {
-    background: var(--code-bg);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    overflow: hidden;
-    box-shadow: 0 24px 60px -20px rgba(0,0,0,.4);
-    font-family: "SF Mono", "Monaco", "Menlo", Consolas, monospace;
-    font-size: 13.5px;
-  }
-  .code-bar {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 16px;
-    border-bottom: 1px solid var(--border);
-    background: color-mix(in srgb, var(--code-bg) 80%, var(--text) 5%);
-  }
-  .code-dot { width: 11px; height: 11px; border-radius: 50%; }
-  .code-dot.r { background: #ff5f57; }
-  .code-dot.y { background: #febc2e; }
-  .code-dot.g { background: #28c840; }
-  .code-file { margin-left: 12px; font-size: 12px; color: var(--muted); }
-  .code-body {
-    padding: 20px;
-    line-height: 1.7;
-    color: #d4d4d8;
-    overflow-x: auto;
-  }
-  body.light .code-body { color: #1f2937; }
-  .c-key { color: #c084fc; }
-  .c-str { color: #86efac; }
-  body.light .c-str { color: #16a34a; }
-  .c-fn { color: #60a5fa; }
-  .c-com { color: #6b7280; font-style: italic; }
-  .c-num { color: #fbbf24; }
-
-  /* ============ CTA ============ */
-  .cta {
-    padding: 120px 24px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .cta::before {
-    content: "";
-    position: absolute;
-    bottom: -30%; left: 50%;
-    transform: translateX(-50%);
-    width: 800px; height: 800px;
-    background: radial-gradient(circle, color-mix(in srgb, var(--accent-2) 20%, transparent) 0%, transparent 60%);
-    filter: blur(60px);
-    z-index: 0;
-  }
-  .cta-inner {
-    position: relative;
-    z-index: 1;
-    max-width: 700px;
-    margin: 0 auto;
-  }
-  .cta h2 {
-    font-size: clamp(32px, 5vw, 56px);
-    font-weight: 600;
-    letter-spacing: -0.03em;
-    line-height: 1.1;
-    margin-bottom: 20px;
-  }
-  .cta p { color: var(--muted); font-size: 18px; margin-bottom: 36px; }
-
-  /* ============ FOOTER ============ */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 60px 24px 40px;
-    background: var(--bg-alt);
-  }
-  .footer-inner { max-width: 1200px; margin: 0 auto; }
-  .footer-top {
-    display: grid;
-    grid-template-columns: 2fr repeat(3, 1fr);
-    gap: 48px;
-    margin-bottom: 48px;
-  }
-  .footer-brand p { color: var(--muted); font-size: 14px; margin-top: 16px; max-width: 280px; }
-  .footer-col h4 {
-    font-size: 13px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: .1em;
-    margin-bottom: 16px;
-  }
-  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-  .footer-col a { color: var(--muted); font-size: 14px; transition: color .2s; }
-  .footer-col a:hover { color: var(--text); }
-  .footer-bottom {
-    padding-top: 32px;
-    border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 16px;
-    color: var(--muted);
-    font-size: 13px;
-  }
-  .footer-social { display: flex; gap: 16px; }
-  .footer-social a { color: var(--muted); transition: color .2s; }
-  .footer-social a:hover { color: var(--text); }
-
-  /* ============ SCROLL REVEAL ============ */
-  [data-reveal] {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity .8s cubic-bezier(.22,1,.36,1),
-                transform .8s cubic-bezier(.22,1,.36,1);
-    will-change: opacity, transform;
-  }
-  [data-reveal="left"]  { transform: translateX(-40px); }
-  [data-reveal="right"] { transform: translateX(40px); }
-  [data-reveal="scale"] { transform: scale(.94); }
-  [data-reveal].is-visible {
-    opacity: 1;
-    transform: translate(0,0) scale(1);
-  }
-
-  .stagger > * { transition-delay: 0ms; }
-  .stagger > *:nth-child(1) { transition-delay: .05s; }
-  .stagger > *:nth-child(2) { transition-delay: .12s; }
-  .stagger > *:nth-child(3) { transition-delay: .19s; }
-  .stagger > *:nth-child(4) { transition-delay: .26s; }
-  .stagger > *:nth-child(5) { transition-delay: .33s; }
-  .stagger > *:nth-child(6) { transition-delay: .40s; }
-  .stagger > *:nth-child(7) { transition-delay: .47s; }
-  .stagger > *:nth-child(8) { transition-delay: .54s; }
-
-  /* ============ RESPONSIVE ============ */
-  @media (max-width: 900px) {
-    .nav-links { display: none; }
-    .split { grid-template-columns: 1fr; gap: 32px; }
-    .split.reverse .split-media { order: 0; }
-    .code-grid { grid-template-columns: 1fr; gap: 40px; }
-    .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
-    .footer-brand { grid-column: 1 / -1; }
-  }
-  @media (max-width: 500px) {
-    .hero { padding: 120px 20px 60px; }
-    .hero-actions { flex-direction: column; }
-    .hero-actions .btn { width: 100%; justify-content: center; }
-    .footer-top { grid-template-columns: 1fr; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-      animation-duration: .001ms !important;
-      transition-duration: .001ms !important;
-    }
-    [data-reveal], .hero-inner > * { opacity: 1; transform: none; }
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web3 Design Agency - Mockup</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #ffffff; }
+        .gradient-text { background: linear-gradient(to right, #ff8a00, #e52e71); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .marquee { display: flex; animation: scroll 20s linear infinite; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .glass-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+    </style>
 </head>
-<body>
+<body class="antialiased">
 
-<!-- ============ NAV ============ -->
-<nav>
-  <div class="nav-inner">
-    <a href="#" class="logo">
-      <span class="logo-mark">V</span>
-      <span>Voyage AI</span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="#features">Products</a></li>
-      <li><a href="#models">Models</a></li>
-      <li><a href="#docs">Docs</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#blog">Blog</a></li>
-    </ul>
-    <div class="nav-right">
-      <button class="theme-btn" id="themeBtn" title="Toggle theme">🌙</button>
-      <a href="#" class="btn btn-ghost">Sign in</a>
-      <a href="#" class="btn btn-primary">Get started →</a>
+    <!-- 1. HEADER (Lebih banyak menu & Search) -->
+    <nav class="flex justify-between items-center px-8 py-6 border-b border-white/10 sticky top-0 bg-black/80 backdrop-blur-md z-50">
+        <div class="text-2xl font-bold gradient-text">Web3</div>
+        <div class="hidden md:flex space-x-8 text-sm text-gray-400">
+            <a href="#" class="hover:text-white transition">Projects</a>
+            <a href="#" class="hover:text-white transition">Services</a>
+            <a href="#" class="hover:text-white transition">Company</a>
+            <a href="#" class="hover:text-white transition">Pricing</a>
+            <a href="#" class="hover:text-white transition">Blog</a>
+            <a href="#" class="hover:text-white transition">Contact</a>
+        </div>
+        <div class="flex items-center space-x-4">
+            <div class="hidden lg:block relative">
+                <input type="text" placeholder="Search..." class="bg-white/10 border border-white/20 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-orange-500">
+            </div>
+            <button class="bg-white text-black px-6 py-2 rounded-full text-sm font-semibold hover:bg-gray-200 transition">START NOW</button>
+        </div>
+    </nav>
+
+    <!-- 2. HERO SECTION (Dengan lebih banyak elemen visual & data) -->
+    <section class="flex flex-col md:flex-row justify-between items-center px-8 py-20 max-w-7xl mx-auto">
+        <div class="md:w-1/2 space-y-6">
+            <h1 class="text-5xl md:text-7xl font-extrabold leading-tight">
+                Web3 Design <br> <span class="gradient-text">Agency.</span>
+            </h1>
+            <p class="text-gray-400 text-lg max-w-md">
+                Kami membangun masa depan internet. Layanan desain UI/UX, pengembangan smart contract, dan strategi Web3 untuk bisnis Anda.
+            </p>
+            
+            <!-- Tambahan: Stats Box (Lebih banyak dari aslinya) -->
+            <div class="flex space-x-6 pt-4">
+                <div class="glass-card p-4 rounded-xl">
+                    <div class="text-2xl font-bold">240+</div>
+                    <div class="text-xs text-gray-400">Partners</div>
+                </div>
+                <div class="glass-card p-4 rounded-xl">
+                    <div class="text-2xl font-bold">92%</div>
+                    <div class="text-xs text-gray-400">Satisfaction</div>
+                </div>
+                <div class="glass-card p-4 rounded-xl">
+                    <div class="text-2xl font-bold">15+</div>
+                    <div class="text-xs text-gray-400">Awards</div>
+                </div>
+            </div>
+
+            <div class="flex space-x-4 pt-6">
+                <button class="bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-gray-200 transition">GET STARTED</button>
+                <button class="glass-card px-8 py-3 rounded-full font-semibold hover:bg-white/10 transition">View Portfolio</button>
+            </div>
+        </div>
+        
+        <!-- Placeholder untuk 3D Head (Menggunakan CSS Gradient) -->
+        <div class="md:w-1/2 flex justify-center mt-10 md:mt-0 relative">
+            <div class="w-64 h-64 md:w-96 md:h-96 rounded-full bg-gradient-to-tr from-orange-500 via-pink-500 to-purple-600 blur-3xl opacity-30 absolute"></div>
+            <div class="w-48 h-48 md:w-72 md:h-72 rounded-full bg-gradient-to-bl from-blue-500 to-cyan-400 opacity-20 absolute top-10 left-10"></div>
+            <div class="relative z-10 glass-card p-10 rounded-full w-64 h-64 md:w-80 md:h-80 flex items-center justify-center">
+                <span class="text-6xl font-bold text-white/20">3D ART</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. TICKER / MARQUEE (Dengan lebih banyak item) -->
+    <div class="bg-white/5 py-4 overflow-hidden border-y border-white/10">
+        <div class="marquee flex space-x-12 text-gray-400 font-semibold uppercase tracking-wider text-sm">
+            <span>Web Design</span> <span class="text-orange-500">✦</span>
+            <span>Dashboard</span> <span class="text-orange-500">✦</span>
+            <span>NFT ART</span> <span class="text-orange-500">✦</span>
+            <span>Development</span> <span class="text-orange-500">✦</span>
+            <span>Strategy</span> <span class="text-orange-500">✦</span>
+            <span>Motion Design</span> <span class="text-orange-500">✦</span>
+            <span>Smart Contracts</span> <span class="text-orange-500">✦</span>
+            <span>Tokenomics</span> <span class="text-orange-500">✦</span>
+        </div>
     </div>
-  </div>
-</nav>
 
-<!-- ============ HERO ============ -->
-<header class="hero">
-  <div class="hero-inner">
-    <div class="badge">
-      <span class="badge-dot"></span>
-      <span>Now serving voyage-3-large</span>
-    </div>
-    <h1>
-      Embeddings for <span class="grad">AI-native</span> applications
-    </h1>
-    <p>
-      State-of-the-art embedding models for text, images, and video.
-      Built for retrieval, RAG, and semantic search at scale.
-    </p>
-    <div class="hero-actions">
-      <a href="#" class="btn btn-accent">Start building →</a>
-      <a href="#" class="btn btn-ghost">Read the docs</a>
-    </div>
-    <div class="media media-hero" data-label="Hero video · ganti dengan <video> atau <img>">
-      <div class="media-icon">▶</div>
-    </div>
-  </div>
-</header>
+    <!-- 4. SERVICES SECTION (Diperluas menjadi Grid, bukan hanya 1) -->
+    <section class="px-8 py-24 max-w-7xl mx-auto">
+        <h2 class="text-4xl font-bold text-center mb-16">Our Services</h2>
+        
+        <!-- Grid Layanan (Menambahkan lebih banyak layanan) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Card 1 -->
+            <div class="glass-card p-8 rounded-2xl hover:border-orange-500/50 transition duration-300">
+                <div class="text-4xl mb-4">🎨</div>
+                <h3 class="text-xl font-bold mb-2">UI/UX Design</h3>
+                <p class="text-gray-400 text-sm mb-6">Desain antarmuka yang intuitif dan pengalaman pengguna yang mulus untuk aplikasi Web3 Anda.</p>
+                <ul class="text-sm text-gray-300 space-y-2">
+                    <li>✓ User Research</li>
+                    <li>✓ Wireframing</li>
+                    <li>✓ Prototyping</li>
+                </ul>
+            </div>
+            <!-- Card 2 -->
+            <div class="glass-card p-8 rounded-2xl hover:border-orange-500/50 transition duration-300">
+                <div class="text-4xl mb-4">⚙️</div>
+                <h3 class="text-xl font-bold mb-2">Web3 Development</h3>
+                <p class="text-gray-400 text-sm mb-6">Pengembangan smart contract dan integrasi blockchain yang aman dan terukur.</p>
+                <ul class="text-sm text-gray-300 space-y-2">
+                    <li>✓ Solidity / Rust</li>
+                    <li>✓ DApp Development</li>
+                    <li>✓ API Integration</li>
+                </ul>
+            </div>
+            <!-- Card 3 -->
+            <div class="glass-card p-8 rounded-2xl hover:border-orange-500/50 transition duration-300">
+                <div class="text-4xl mb-4">🖼️</div>
+                <h3 class="text-xl font-bold mb-2">NFT Art Generation</h3>
+                <p class="text-gray-400 text-sm mb-6">Pembuatan aset digital dan koleksi NFT yang unik dengan teknologi generatif.</p>
+                <ul class="text-sm text-gray-300 space-y-2">
+                    <li>✓ 3D Modeling</li>
+                    <li>✓ Generative Art</li>
+                    <li>✓ Metadata Setup</li>
+                </ul>
+            </div>
+        </div>
 
-<!-- ============ LOGOS ============ -->
-<div class="logos">
-  <p data-reveal>Trusted by teams at</p>
-  <div class="logos-grid stagger" data-reveal>
-    <div class="logo-ph">Logo 1</div>
-    <div class="logo-ph">Logo 2</div>
-    <div class="logo-ph">Logo 3</div>
-    <div class="logo-ph">Logo 4</div>
-    <div class="logo-ph">Logo 5</div>
-    <div class="logo-ph">Logo 6</div>
-  </div>
-</div>
+        <!-- Detail Section (Seperti di gambar asli) -->
+        <div class="mt-20 flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/2">
+                <h3 class="text-3xl font-bold mb-4">UI/UX Design</h3>
+                <p class="text-gray-400 mb-6">Kami menggabungkan estetika modern dengan fungsionalitas tinggi. Tim kami memastikan setiap pixel memiliki tujuan, meningkatkan konversi dan keterlibatan pengguna.</p>
+                <ul class="space-y-4 mb-8">
+                    <li class="flex items-center"><span class="text-orange-500 mr-3">✓</span> User Research & Testing</li>
+                    <li class="flex items-center"><span class="text-orange-500 mr-3">✓</span> User Experience Design</li>
+                    <li class="flex items-center"><span class="text-orange-500 mr-3">✓</span> Web Application Design</li>
+                </ul>
+                <button class="border border-white/20 px-6 py-3 rounded-full text-sm hover:bg-white/10 transition">LEARN MORE ↗</button>
+            </div>
+            <div class="md:w-1/2 glass-card p-8 rounded-2xl flex justify-center">
+                <div class="w-full h-48 bg-gradient-to-r from-orange-500/20 to-pink-500/20 rounded-xl border border-white/10 flex items-center justify-center">
+                    <span class="text-gray-500">UI Dashboard Mockup</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- ============ FEATURES ============ -->
-<section class="block" id="features">
-  <div class="section-head" data-reveal>
-    <div class="eyebrow">Why Voyage</div>
-    <h2>Built for production AI</h2>
-    <p>Everything you need to power retrieval, search, and understanding — in one API.</p>
-  </div>
-  <div class="features stagger" data-reveal>
-    <div class="feature">
-      <div class="feature-icon">⚡</div>
-      <h3>Blazing fast</h3>
-      <p>Low-latency inference with global edge deployment. Sub-100ms p50 across regions.</p>
-    </div>
-    <div class="feature">
-      <div class="feature-icon">🎯</div>
-      <h3>Domain-tuned</h3>
-      <p>Models specialized for code, law, finance, and multilingual retrieval.</p>
-    </div>
-    <div class="feature">
-      <div class="feature-icon">🖼️</div>
-      <h3>Multimodal</h3>
-      <p>Embed text, images, and video into a single shared vector space.</p>
-    </div>
-    <div class="feature">
-      <div class="feature-icon">🔒</div>
-      <h3>Private by default</h3>
-      <p>Zero data retention, SOC 2 Type II, and optional self-hosting.</p>
-    </div>
-    <div class="feature">
-      <div class="feature-icon">📈</div>
-      <h3>Scales with you</h3>
-      <p>From prototype to billions of embeddings — no infrastructure to manage.</p>
-    </div>
-    <div class="feature">
-      <div class="feature-icon">🧩</div>
-      <h3>Drop-in ready</h3>
-      <p>Compatible with LangChain, LlamaIndex, Pinecone, and every major vector DB.</p>
-    </div>
-  </div>
-</section>
+    <!-- 5. STATS SECTION (Dengan tambahan data) -->
+    <section class="bg-gradient-to-r from-orange-900/20 to-pink-900/20 py-16 border-y border-white/10">
+        <div class="max-w-7xl mx-auto px-8 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+                <div class="text-4xl font-bold mb-2">5M+</div>
+                <div class="text-gray-400 text-sm">Customers</div>
+            </div>
+            <div>
+                <div class="text-4xl font-bold mb-2">450M+</div>
+                <div class="text-gray-400 text-sm">Coverage</div>
+            </div>
+            <div>
+                <div class="text-4xl font-bold mb-2">22%</div>
+                <div class="text-gray-400 text-sm">Earning</div>
+            </div>
+            <div>
+                <div class="text-4xl font-bold mb-2">8.03%</div>
+                <div class="text-gray-400 text-sm">Interest</div>
+            </div>
+        </div>
+    </section>
 
-<!-- ============ SPLIT SECTIONS ============ -->
-<section class="block" id="models">
+    <!-- 6. TESTIMONIALS SECTION (Tambahan Input) -->
+    <section class="px-8 py-24 max-w-7xl mx-auto">
+        <h2 class="text-4xl font-bold text-center mb-16">Our Happy Customers</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Testimoni 1 -->
+            <div class="glass-card p-8 rounded-2xl">
+                <p class="text-gray-300 italic mb-6">"Tim ini luar biasa! Mereka mengubah ide NFT kami menjadi kenyataan dengan desain yang memukau."</p>
+                <div class="flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 mr-4"></div>
+                    <div>
+                        <div class="font-bold">Alex Johnson</div>
+                        <div class="text-xs text-gray-500">CEO, CryptoArt</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Testimoni 2 -->
+            <div class="glass-card p-8 rounded-2xl">
+                <p class="text-gray-300 italic mb-6">"Pengembangan smart contract yang sangat aman dan profesional. Prosesnya transparan dari awal hingga akhir."</p>
+                <div class="flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 mr-4"></div>
+                    <div>
+                        <div class="font-bold">Sarah Lee</div>
+                        <div class="text-xs text-gray-500">Founder, DeFi Hub</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Testimoni 3 -->
+            <div class="glass-card p-8 rounded-2xl">
+                <p class="text-gray-300 italic mb-6">"Desain UI/UX mereka meningkatkan retensi pengguna aplikasi kami hingga 40%. Sangat direkomendasikan!"</p>
+                <div class="flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 mr-4"></div>
+                    <div>
+                        <div class="font-bold">Michael Chen</div>
+                        <div class="text-xs text-gray-500">CTO, MetaWallet</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <div class="split">
-    <div class="split-text" data-reveal="left">
-      <div class="eyebrow">voyage-3-large</div>
-      <h3>Our most capable embedding model</h3>
-      <p>
-        Outperforms every commercial and open-source model on MTEB,
-        with strong multilingual and long-context performance.
-      </p>
-      <ul>
-        <li>32k token context window</li>
-        <li>1024 / 512 / 256 dimensions</li>
-        <li>Best-in-class retrieval accuracy</li>
-      </ul>
-    </div>
-    <div class="split-media" data-reveal="right">
-      <div class="media" data-label="Benchmark chart · ganti dengan <img>">
-        <div class="media-icon">📊</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="split reverse">
-    <div class="split-text" data-reveal="right">
-      <div class="eyebrow">voyage-multimodal-3</div>
-      <h3>One space for text, images, and video</h3>
-      <p>
-        Search across modalities with a single query. Perfect for
-        e-commerce, media libraries, and content discovery.
-      </p>
-      <ul>
-        <li>Unified text + image + video embeddings</li>
-        <li>Interleaved document support</li>
-        <li>Zero-shot visual search</li>
-      </ul>
-    </div>
-    <div class="split-media" data-reveal="left">
-      <div class="media" data-label="Multimodal visual · ganti dengan <video>">
-        <div class="media-icon">🎬</div>
-      </div>
-    </div>
-  </div>
-
-</section>
-
-<!-- ============ CODE ============ -->
-<section class="code-section" id="docs">
-  <div class="code-grid">
-    <div class="code-text" data-reveal="left">
-      <h2>Three lines to your first embedding</h2>
-      <p>
-        Install the SDK, add your API key, and start embedding text,
-        images, or video in seconds.
-      </p>
-      <a href="#" class="btn btn-primary">Explore API reference →</a>
-    </div>
-    <div class="code-window" data-reveal="right">
-      <div class="code-bar">
-        <span class="code-dot r"></span>
-        <span class="code-dot y"></span>
-        <span class="code-dot g"></span>
-        <span class="code-file">embed.py</span>
-      </div>
-      <div class="code-body">
-<pre><span class="c-com"># pip install voyageai</span>
-<span class="c-key">import</span> voyageai
-
-vo = voyageai.<span class="c-fn">Client</span>(<span class="c-str">"pa-..."</span>)
-
-result = vo.<span class="c-fn">embed</span>(
-    texts=[<span class="c-str">"The quick brown fox"</span>],
-    model=<span class="c-str">"voyage-3-large"</span>,
-    input_type=<span class="c-str">"query"</span>,
-)
-
-<span class="c-fn">print</span>(result.embeddings[<span class="c-num">0</span>][:<span class="c-num">5</span>])
-<span class="c-com"># [0.023, -0.014, 0.087, ...]</span></pre>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ CTA ============ -->
-<section class="cta" id="pricing">
-  <div class="cta-inner" data-reveal="scale">
-    <h2>Start building today</h2>
-    <p>Free tier includes 200M tokens. No credit card required.</p>
-    <div class="hero-actions" style="margin-bottom:0;">
-      <a href="#" class="btn btn-accent">Get your API key →</a>
-      <a href="#" class="btn btn-ghost">Talk to sales</a>
-    </div>
-  </div>
-</section>
-
-<!-- ============ FOOTER ============ -->
-<footer id="blog">
-  <div class="footer-inner">
-    <div class="footer-top stagger" data-reveal>
-      <div class="footer-brand">
-        <a href="#" class="logo">
-          <span class="logo-mark">V</span>
-          <span>Voyage AI</span>
-        </a>
-        <p>State-of-the-art embeddings for text, images, and video.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Product</h4>
-        <ul>
-          <li><a href="#">Models</a></li>
-          <li><a href="#">Pricing</a></li>
-          <li><a href="#">Changelog</a></li>
-          <li><a href="#">Status</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Developers</h4>
-        <ul>
-          <li><a href="#">Docs</a></li>
-          <li><a href="#">API Reference</a></li>
-          <li><a href="#">Cookbook</a></li>
-          <li><a href="#">Examples</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 Voyage AI — Mockup for design reference only.</span>
-      <div class="footer-social">
-        <a href="#">Twitter</a>
-        <a href="#">GitHub</a>
-        <a href="#">Discord</a>
-        <a href="#">LinkedIn</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<script>
-  /* ===== Theme toggle ===== */
-  const themeBtn = document.getElementById('themeBtn');
-  const body = document.body;
-
-  if (localStorage.getItem('voyage-theme') === 'light') {
-    body.classList.add('light');
-    themeBtn.textContent = '☀️';
-  }
-  themeBtn.addEventListener('click', () => {
-    body.classList.toggle('light');
-    const isLight = body.classList.contains('light');
-    themeBtn.textContent = isLight ? '☀️' : '🌙';
-    localStorage.setItem('voyage-theme', isLight ? 'light' : 'dark');
-  });
-
-  /* ===== Nav shadow saat scroll ===== */
-  const nav = document.querySelector('nav');
-  window.addEventListener('scroll', () => {
-    nav.style.boxShadow = window.scrollY > 20
-      ? '0 4px 20px rgba(0,0,0,.08)'
-      : 'none';
-  }, { passive: true });
-
-  /* ===== Scroll reveal ===== */
-  const revealEls = document.querySelectorAll('[data-reveal]');
-
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        io.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.15,
-    rootMargin: '0px 0px -80px 0px'
-  });
-
-  revealEls.forEach(el => io.observe(el));
-</script>
+    <!-- 7. FOOTER (Tambahan Input) -->
+    <footer class="border-t border-white/10 pt-16 pb-8 px-8">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div>
+                <div class="text-2xl font-bold gradient-text mb-4">Web3</div>
+                <p class="text-gray-400 text-sm">Membangun masa depan internet yang terdesentralisasi, indah, dan fungsional.</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">Layanan</h4>
+                <ul class="text-gray-400 text-sm space-y-2">
+                    <li><a href="#" class="hover:text-white">UI/UX Design</a></li>
+                    <li><a href="#" class="hover:text-white">Web3 Dev</a></li>
+                    <li><a href="#" class="hover:text-white">NFT Art</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">Perusahaan</h4>
+                <ul class="text-gray-400 text-sm space-y-2">
+                    <li><a href="#" class="hover:text-white">Tentang Kami</a></li>
+                    <li><a href="#" class="hover:text-white">Karier</a></li>
+                    <li><a href="#" class="hover:text-white">Blog</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">Newsletter</h4>
+                <div class="flex">
+                    <input type="email" placeholder="Email Anda" class="bg-white/5 border border-white/10 rounded-l-lg px-4 py-2 text-sm w-full focus:outline-none focus:border-orange-500">
+                    <button class="bg-orange-500 text-white px-4 py-2 rounded-r-lg text-sm font-semibold">Kirim</button>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-gray-500 text-xs border-t border-white/10 pt-8">
+            &copy; 2024 Web3 Design Agency. All rights reserved.
+        </div>
+    </footer>
 
 </body>
 </html>
