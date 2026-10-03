@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web3 Design Agency - Premium Landing Page</title>
+    <title>Web3 Design Agency - Premium Landing Page (Animated Placeholder)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -25,6 +25,158 @@
         ::-webkit-scrollbar-thumb { background: #E52E71; border-radius: 4px; }
         details[open] summary ~ * { animation: sweep .5s ease-in-out; }
         @keyframes sweep { 0% { opacity: 0; transform: translateY(-10px); } 100% { opacity: 1; transform: translateY(0); } }
+
+        /* ========== ANIMASI PLACEHOLDER ========== */
+        /* Hero 3D Animation */
+        .hero-animated {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1000px;
+        }
+        .hero-sphere {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #ff8a00, #e52e71, #8b5cf6);
+            box-shadow: 0 0 80px rgba(229, 46, 113, 0.6), inset 0 0 60px rgba(255, 255, 255, 0.2);
+            animation: float 6s ease-in-out infinite, pulse-glow 4s ease-in-out infinite alternate;
+            transform-style: preserve-3d;
+        }
+        .hero-ring {
+            position: absolute;
+            width: 360px;
+            height: 360px;
+            border: 2px solid rgba(255, 138, 0, 0.3);
+            border-radius: 50%;
+            animation: spin 12s linear infinite;
+            transform: rotateX(70deg) rotateY(20deg);
+            box-shadow: 0 0 30px rgba(255, 138, 0, 0.2);
+        }
+        .hero-ring:nth-child(2) {
+            width: 420px;
+            height: 420px;
+            border-color: rgba(139, 92, 246, 0.3);
+            animation-duration: 18s;
+            animation-direction: reverse;
+            transform: rotateX(60deg) rotateY(-30deg);
+        }
+        .hero-ring:nth-child(3) {
+            width: 480px;
+            height: 480px;
+            border-color: rgba(229, 46, 113, 0.2);
+            animation-duration: 24s;
+            transform: rotateX(80deg) rotateY(10deg);
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotateX(0) rotateY(0); }
+            50% { transform: translateY(-20px) rotateX(5deg) rotateY(10deg); }
+        }
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 60px rgba(229, 46, 113, 0.4), inset 0 0 40px rgba(255, 255, 255, 0.1); }
+            100% { box-shadow: 0 0 120px rgba(255, 138, 0, 0.8), inset 0 0 80px rgba(255, 255, 255, 0.3); }
+        }
+        @keyframes spin {
+            0% { transform: rotateX(70deg) rotateY(20deg) rotateZ(0deg); }
+            100% { transform: rotateX(70deg) rotateY(20deg) rotateZ(360deg); }
+        }
+
+        /* Portfolio Animated Placeholder */
+        .portfolio-animated {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            background-size: 400% 400%;
+            animation: gradient-shift 8s ease infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .portfolio-animated::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,138,0,0.05) 20px, rgba(255,138,0,0.05) 40px);
+            animation: move-grid 10s linear infinite;
+        }
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes move-grid {
+            0% { transform: translate(0,0); }
+            100% { transform: translate(40px,40px); }
+        }
+
+        /* Avatar Animated Placeholder */
+        .avatar-animated {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff8a00, #e52e71, #8b5cf6);
+            background-size: 200% 200%;
+            animation: avatar-glow 3s ease infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            font-size: 14px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        @keyframes avatar-glow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Logo Animated Placeholder */
+        .logo-animated {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 18px;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, #ff8a00, #e52e71, #8b5cf6, #ff8a00);
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: logo-shine 4s linear infinite;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        .logo-animated:hover { opacity: 1; }
+        @keyframes logo-shine {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 300% 50%; }
+        }
+
+        /* Floating particles for hero */
+        .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #ff8a00;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: particle-float 8s infinite ease-in-out;
+        }
+        .particle:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; background: #e52e71; }
+        .particle:nth-child(2) { top: 80%; left: 20%; animation-delay: 1s; background: #8b5cf6; }
+        .particle:nth-child(3) { top: 40%; left: 80%; animation-delay: 2s; background: #ff8a00; }
+        .particle:nth-child(4) { top: 70%; left: 70%; animation-delay: 3s; background: #e52e71; }
+        .particle:nth-child(5) { top: 10%; left: 60%; animation-delay: 4s; background: #8b5cf6; }
+        .particle:nth-child(6) { top: 90%; left: 90%; animation-delay: 5s; background: #ff8a00; }
+        @keyframes particle-float {
+            0%, 100% { transform: translate(0,0) scale(1); opacity: 0.6; }
+            50% { transform: translate(30px, -30px) scale(1.5); opacity: 1; }
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -49,6 +201,16 @@
         <button class="lg:hidden text-2xl" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"><i class="fa-solid fa-bars"></i></button>
     </nav>
 
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden fixed top-20 left-0 w-full glass-card z-40 p-6 flex flex-col space-y-4 lg:hidden">
+        <a href="#home" class="hover:text-orange-500">Home</a>
+        <a href="#services" class="hover:text-orange-500">Services</a>
+        <a href="#portfolio" class="hover:text-orange-500">Portfolio</a>
+        <a href="#pricing" class="hover:text-orange-500">Pricing</a>
+        <a href="#faq" class="hover:text-orange-500">FAQ</a>
+        <button class="bg-gradient-to-r from-orange-500 to-pink-600 text-white px-6 py-2 rounded-full text-sm font-semibold w-full mt-4">Get Started</button>
+    </div>
+
     <!-- HERO SECTION -->
     <section id="home" class="relative min-h-screen flex items-center justify-center pt-24 pb-12 px-6 overflow-hidden">
         <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-500/20 rounded-full blur-[120px] -z-10"></div>
@@ -64,32 +226,44 @@
                     <button class="glass-card px-8 py-4 rounded-full font-bold hover:bg-white/10 transition flex items-center gap-2"><i class="fa-solid fa-play text-orange-500"></i> Watch Showreel</button>
                 </div>
                 
-                <!-- BAGIAN LOGO KLIEN (Ganti logo-1.png, dst) -->
+                <!-- LOGO KLIEN (ANIMASI PLACEHOLDER) -->
                 <div class="pt-8 border-t border-white/10">
                     <p class="text-xs text-gray-500 uppercase tracking-widest mb-4">Trusted by leading protocols</p>
-                    <div class="flex gap-8 items-center opacity-60 hover:opacity-100 transition duration-300">
-                        <img src="assets/logo-1.png" alt="Client 1" class="h-8 object-contain hover:grayscale-0 transition">
-                        <img src="assets/logo-2.png" alt="Client 2" class="h-8 object-contain hover:grayscale-0 transition">
-                        <img src="assets/logo-3.png" alt="Client 3" class="h-8 object-contain hover:grayscale-0 transition">
-                        <img src="assets/logo-4.png" alt="Client 4" class="h-8 object-contain hover:grayscale-0 transition">
+                    <div class="flex gap-8 items-center">
+                        <!-- GANTI DENGAN GAMBAR ASLI: <img src="assets/logo-1.png" class="h-8 object-contain"> -->
+                        <div class="logo-animated">ETHEREUM</div>
+                        <div class="logo-animated" style="animation-delay: 0.5s;">SOLANA</div>
+                        <div class="logo-animated" style="animation-delay: 1s;">POLYGON</div>
+                        <div class="logo-animated" style="animation-delay: 1.5s;">CHAINLINK</div>
                     </div>
                 </div>
             </div>
 
-            <!-- BAGIAN GAMBAR HERO 3D (Ganti hero-3d.png) -->
+            <!-- HERO 3D ANIMASI PLACEHOLDER -->
             <div class="lg:w-1/2 relative" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
                 <div class="relative w-full aspect-square max-w-lg mx-auto">
                     <div class="absolute inset-0 bg-gradient-to-tr from-orange-500 to-purple-600 rounded-full blur-[80px] opacity-40 animate-pulse"></div>
                     
-                    <!-- JIKA MAU PAKAI GAMBAR BIASA (PNG/JPG) -->
-                    <img src="assets/hero-3d.png" alt="Hero 3D Graphic" class="relative z-10 w-full h-full object-cover rounded-full border border-white/10 shadow-[0_0_50px_rgba(255,138,0,0.3)]">
-                    
-                    <!-- JIKA MAU PAKAI ANIMASI VIDEO (WEBM/MP4), HAPUS TAG <img> DI ATAS DAN UNCOMMENT KODE DI BAWAH INI:
-                    <video autoplay loop muted playsinline class="relative z-10 w-full h-full object-cover rounded-full border border-white/10 shadow-[0_0_50px_rgba(255,138,0,0.3)]">
-                        <source src="assets/hero-animation.webm" type="video/webm">
-                        <source src="assets/hero-animation.mp4" type="video/mp4">
-                    </video>
+                    <!-- GANTI DENGAN GAMBAR/VIDEO ASLI:
+                         <img src="assets/hero-3d.png" class="relative z-10 w-full h-full object-cover rounded-full border border-white/10 shadow-[0_0_50px_rgba(255,138,0,0.3)]">
+                         atau
+                         <video autoplay loop muted playsinline class="...">
+                             <source src="assets/hero-animation.webm" type="video/webm">
+                         </video>
                     -->
+                    <div class="relative z-10 w-full h-full hero-animated">
+                        <div class="hero-ring"></div>
+                        <div class="hero-ring"></div>
+                        <div class="hero-ring"></div>
+                        <div class="hero-sphere"></div>
+                        <!-- Partikel -->
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                    </div>
                     
                     <div class="absolute top-10 -left-6 glass-card p-4 rounded-2xl z-20 animate-bounce" style="animation-duration: 3s;">
                         <div class="text-2xl font-bold text-white">240+</div>
@@ -107,6 +281,14 @@
     <!-- TICKER -->
     <div class="bg-white/5 py-6 overflow-hidden border-y border-white/10 backdrop-blur-sm">
         <div class="marquee flex space-x-16 text-gray-400 font-semibold uppercase tracking-widest text-sm whitespace-nowrap">
+            <span>Web Design</span> <span class="text-orange-500">✦</span>
+            <span>Dashboard UI</span> <span class="text-orange-500">✦</span>
+            <span>NFT ART</span> <span class="text-orange-500">✦</span>
+            <span>Smart Contracts</span> <span class="text-orange-500">✦</span>
+            <span>Tokenomics</span> <span class="text-orange-500">✦</span>
+            <span>Motion Design</span> <span class="text-orange-500">✦</span>
+            <span>DeFi Platforms</span> <span class="text-orange-500">✦</span>
+            <span>Metaverse</span> <span class="text-orange-500">✦</span>
             <span>Web Design</span> <span class="text-orange-500">✦</span>
             <span>Dashboard UI</span> <span class="text-orange-500">✦</span>
             <span>NFT ART</span> <span class="text-orange-500">✦</span>
@@ -157,36 +339,57 @@
                 <button class="hidden md:block glass-card px-6 py-2 rounded-full text-sm hover:bg-white/10 transition">View All Projects</button>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Ganti portfolio-1.jpg -->
+                <!-- PORTFOLIO 1 - ANIMASI PLACEHOLDER -->
                 <div class="relative group rounded-3xl overflow-hidden aspect-video" data-aos="fade-up" data-aos-delay="100">
-                    <img src="assets/portfolio-1.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Project 1">
+                    <!-- GANTI DENGAN GAMBAR ASLI: <img src="assets/portfolio-1.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-700"> -->
+                    <div class="portfolio-animated">
+                        <div class="relative z-10 text-center">
+                            <i class="fa-solid fa-chart-line text-4xl text-orange-500 mb-2"></i>
+                            <p class="text-white font-bold">DeFi Dashboard</p>
+                        </div>
+                    </div>
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition duration-500 flex flex-col justify-end p-8">
                         <span class="text-orange-500 text-xs font-bold uppercase tracking-wider mb-2">DeFi Platform</span>
                         <h3 class="text-2xl font-bold text-white mb-2">Nexus Swap Dashboard</h3>
                         <p class="text-gray-300 text-sm">UI/UX Design & Frontend Development</p>
                     </div>
                 </div>
-                <!-- Ganti portfolio-2.jpg -->
+                <!-- PORTFOLIO 2 -->
                 <div class="relative group rounded-3xl overflow-hidden aspect-video" data-aos="fade-up" data-aos-delay="200">
-                    <img src="assets/portfolio-2.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Project 2">
+                    <div class="portfolio-animated">
+                        <div class="relative z-10 text-center">
+                            <i class="fa-solid fa-image text-4xl text-pink-500 mb-2"></i>
+                            <p class="text-white font-bold">NFT Gallery</p>
+                        </div>
+                    </div>
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition duration-500 flex flex-col justify-end p-8">
                         <span class="text-pink-500 text-xs font-bold uppercase tracking-wider mb-2">NFT Marketplace</span>
                         <h3 class="text-2xl font-bold text-white mb-2">CryptoArt Gallery</h3>
                         <p class="text-gray-300 text-sm">Smart Contract & Web3 Integration</p>
                     </div>
                 </div>
-                <!-- Ganti portfolio-3.jpg -->
+                <!-- PORTFOLIO 3 -->
                 <div class="relative group rounded-3xl overflow-hidden aspect-video" data-aos="fade-up" data-aos-delay="300">
-                    <img src="assets/portfolio-3.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Project 3">
+                    <div class="portfolio-animated">
+                        <div class="relative z-10 text-center">
+                            <i class="fa-solid fa-cube text-4xl text-purple-500 mb-2"></i>
+                            <p class="text-white font-bold">Virtual Land</p>
+                        </div>
+                    </div>
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition duration-500 flex flex-col justify-end p-8">
                         <span class="text-purple-500 text-xs font-bold uppercase tracking-wider mb-2">Metaverse</span>
                         <h3 class="text-2xl font-bold text-white mb-2">Virtual Land Market</h3>
                         <p class="text-gray-300 text-sm">3D Environment Design</p>
                     </div>
                 </div>
-                <!-- Ganti portfolio-4.jpg -->
+                <!-- PORTFOLIO 4 -->
                 <div class="relative group rounded-3xl overflow-hidden aspect-video" data-aos="fade-up" data-aos-delay="400">
-                    <img src="assets/portfolio-4.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Project 4">
+                    <div class="portfolio-animated">
+                        <div class="relative z-10 text-center">
+                            <i class="fa-solid fa-wallet text-4xl text-blue-500 mb-2"></i>
+                            <p class="text-white font-bold">MetaWallet</p>
+                        </div>
+                    </div>
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition duration-500 flex flex-col justify-end p-8">
                         <span class="text-blue-500 text-xs font-bold uppercase tracking-wider mb-2">Wallet App</span>
                         <h3 class="text-2xl font-bold text-white mb-2">MetaWallet Mobile</h3>
@@ -211,27 +414,26 @@
     <section class="py-24 px-6 max-w-7xl mx-auto">
         <h2 class="text-4xl font-bold text-center mb-16" data-aos="fade-up">Our Happy <span class="gradient-text">Customers</span></h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Ganti avatar-1.jpg -->
+            <!-- AVATAR 1 - ANIMASI PLACEHOLDER -->
             <div class="glass-card p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="100">
                 <p class="text-gray-300 italic mb-6">"Tim ini luar biasa! Mereka mengubah ide NFT kami menjadi kenyataan dengan desain yang memukau."</p>
                 <div class="flex items-center">
-                    <img src="assets/avatar-1.jpg" alt="Alex Johnson" class="w-12 h-12 rounded-full mr-4 object-cover border-2 border-orange-500">
+                    <!-- GANTI DENGAN GAMBAR ASLI: <img src="assets/avatar-1.jpg" class="w-12 h-12 rounded-full mr-4 object-cover border-2 border-orange-500"> -->
+                    <div class="avatar-animated mr-4">AJ</div>
                     <div><div class="font-bold">Alex Johnson</div><div class="text-xs text-gray-500">CEO, CryptoArt</div></div>
                 </div>
             </div>
-            <!-- Ganti avatar-2.jpg -->
             <div class="glass-card p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="200">
                 <p class="text-gray-300 italic mb-6">"Pengembangan smart contract yang sangat aman dan profesional. Prosesnya transparan dari awal hingga akhir."</p>
                 <div class="flex items-center">
-                    <img src="assets/avatar-2.jpg" alt="Sarah Lee" class="w-12 h-12 rounded-full mr-4 object-cover border-2 border-pink-500">
+                    <div class="avatar-animated mr-4" style="animation-delay: 0.5s;">SL</div>
                     <div><div class="font-bold">Sarah Lee</div><div class="text-xs text-gray-500">Founder, DeFi Hub</div></div>
                 </div>
             </div>
-            <!-- Ganti avatar-3.jpg -->
             <div class="glass-card p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="300">
                 <p class="text-gray-300 italic mb-6">"Desain UI/UX mereka meningkatkan retensi pengguna aplikasi kami hingga 40%. Sangat direkomendasikan!"</p>
                 <div class="flex items-center">
-                    <img src="assets/avatar-3.jpg" alt="Michael Chen" class="w-12 h-12 rounded-full mr-4 object-cover border-2 border-purple-500">
+                    <div class="avatar-animated mr-4" style="animation-delay: 1s;">MC</div>
                     <div><div class="font-bold">Michael Chen</div><div class="text-xs text-gray-500">CTO, MetaWallet</div></div>
                 </div>
             </div>
