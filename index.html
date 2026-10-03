@@ -4,55 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web3 Design Agency - Premium Landing Page</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #050505; color: #ffffff; overflow-x: hidden; }
         h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; }
-        
-        /* Premium Gradient Text */
         .gradient-text { background: linear-gradient(135deg, #FF8A00 0%, #E52E71 50%, #8B5CF6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        
-        /* Glassmorphism Card */
         .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.4s ease; }
         .glass-card:hover { border-color: rgba(255, 138, 0, 0.4); box-shadow: 0 0 30px rgba(255, 138, 0, 0.1); transform: translateY(-5px); }
-        
-        /* Glowing Button */
         .btn-glow { position: relative; overflow: hidden; transition: all 0.3s ease; }
         .btn-glow::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: all 0.5s ease; }
         .btn-glow:hover::before { left: 100%; }
-        
-        /* Marquee Animation */
         .marquee { display: flex; animation: scroll 30s linear infinite; }
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        
-        /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #050505; }
         ::-webkit-scrollbar-thumb { background: #E52E71; border-radius: 4px; }
-        
-        /* Accordion Transition */
         details[open] summary ~ * { animation: sweep .5s ease-in-out; }
         @keyframes sweep { 0% { opacity: 0; transform: translateY(-10px); } 100% { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- 1. HEADER / NAVBAR -->
+    <!-- HEADER -->
     <nav class="fixed w-full z-50 glass-card border-b border-white/5 py-4 px-6 md:px-12 flex justify-between items-center transition-all duration-300" id="navbar">
         <div class="text-2xl font-bold flex items-center gap-2">
             <div class="w-3 h-3 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 animate-pulse"></div>
             <span class="gradient-text">Web3</span>
         </div>
-        
-        <!-- Desktop Menu -->
         <div class="hidden lg:flex space-x-8 text-sm font-medium text-gray-300">
             <a href="#home" class="hover:text-white transition">Home</a>
             <a href="#services" class="hover:text-white transition">Services</a>
@@ -60,84 +42,59 @@
             <a href="#pricing" class="hover:text-white transition">Pricing</a>
             <a href="#faq" class="hover:text-white transition">FAQ</a>
         </div>
-        
         <div class="hidden lg:flex items-center space-x-4">
             <button class="text-sm font-medium hover:text-orange-500 transition">Log In</button>
-            <button class="btn-glow bg-gradient-to-r from-orange-500 to-pink-600 text-white px-6 py-2.5 rounded-full text-sm font-semibold shadow-[0_0_20px_rgba(229,46,113,0.4)] hover:shadow-[0_0_30px_rgba(229,46,113,0.6)] transition">
-                Get Started
-            </button>
+            <button class="btn-glow bg-gradient-to-r from-orange-500 to-pink-600 text-white px-6 py-2.5 rounded-full text-sm font-semibold shadow-[0_0_20px_rgba(229,46,113,0.4)] hover:shadow-[0_0_30px_rgba(229,46,113,0.6)] transition">Get Started</button>
         </div>
-
-        <!-- Mobile Menu Button -->
-        <button class="lg:hidden text-2xl" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
-            <i class="fa-solid fa-bars"></i>
-        </button>
+        <button class="lg:hidden text-2xl" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"><i class="fa-solid fa-bars"></i></button>
     </nav>
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden fixed top-20 left-0 w-full glass-card z-40 p-6 flex flex-col space-y-4 lg:hidden">
-        <a href="#home" class="hover:text-orange-500">Home</a>
-        <a href="#services" class="hover:text-orange-500">Services</a>
-        <a href="#portfolio" class="hover:text-orange-500">Portfolio</a>
-        <a href="#pricing" class="hover:text-orange-500">Pricing</a>
-        <a href="#faq" class="hover:text-orange-500">FAQ</a>
-        <button class="bg-gradient-to-r from-orange-500 to-pink-600 text-white px-6 py-2 rounded-full text-sm font-semibold w-full mt-4">Get Started</button>
-    </div>
-
-    <!-- 2. HERO SECTION -->
+    <!-- HERO SECTION -->
     <section id="home" class="relative min-h-screen flex items-center justify-center pt-24 pb-12 px-6 overflow-hidden">
-        <!-- Background Glow Orbs -->
         <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-500/20 rounded-full blur-[120px] -z-10"></div>
         <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-[120px] -z-10"></div>
 
         <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
-            <!-- Left Content -->
             <div class="lg:w-1/2 space-y-8" data-aos="fade-right" data-aos-duration="1000">
-                <div class="inline-block glass-card px-4 py-1.5 rounded-full text-xs font-medium text-orange-400 border-orange-500/30">
-                    🚀 #1 Web3 Design Agency in 2024
-                </div>
-                <h1 class="text-5xl md:text-7xl font-extrabold leading-[1.1]">
-                    Build the Future of <br> <span class="gradient-text">Web3 Design.</span>
-                </h1>
-                <p class="text-gray-400 text-lg max-w-lg leading-relaxed">
-                    Kami mengubah ide kompleks blockchain menjadi pengalaman digital yang indah, intuitif, dan menguntungkan. Dari UI/UX hingga Smart Contract.
-                </p>
-                
+                <div class="inline-block glass-card px-4 py-1.5 rounded-full text-xs font-medium text-orange-400 border-orange-500/30">🚀 #1 Web3 Design Agency in 2024</div>
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-[1.1]">Build the Future of <br> <span class="gradient-text">Web3 Design.</span></h1>
+                <p class="text-gray-400 text-lg max-w-lg leading-relaxed">Kami mengubah ide kompleks blockchain menjadi pengalaman digital yang indah, intuitif, dan menguntungkan.</p>
                 <div class="flex flex-wrap gap-4">
-                    <button class="btn-glow bg-white text-black px-8 py-4 rounded-full font-bold hover:bg-gray-200 transition flex items-center gap-2">
-                        Start Your Project <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                    <button class="glass-card px-8 py-4 rounded-full font-bold hover:bg-white/10 transition flex items-center gap-2">
-                        <i class="fa-solid fa-play text-orange-500"></i> Watch Showreel
-                    </button>
+                    <button class="btn-glow bg-white text-black px-8 py-4 rounded-full font-bold hover:bg-gray-200 transition flex items-center gap-2">Start Your Project <i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="glass-card px-8 py-4 rounded-full font-bold hover:bg-white/10 transition flex items-center gap-2"><i class="fa-solid fa-play text-orange-500"></i> Watch Showreel</button>
                 </div>
-
-                <!-- Trusted By -->
+                
+                <!-- BAGIAN LOGO KLIEN (Ganti logo-1.png, dst) -->
                 <div class="pt-8 border-t border-white/10">
                     <p class="text-xs text-gray-500 uppercase tracking-widest mb-4">Trusted by leading protocols</p>
-                    <div class="flex gap-6 text-gray-500 text-2xl">
-                        <i class="fa-brands fa-ethereum hover:text-white transition"></i>
-                        <i class="fa-brands fa-bitcoin hover:text-white transition"></i>
-                        <i class="fa-brands fa-solana hover:text-white transition"></i>
-                        <i class="fa-brands fa-aws hover:text-white transition"></i>
+                    <div class="flex gap-8 items-center opacity-60 hover:opacity-100 transition duration-300">
+                        <img src="assets/logo-1.png" alt="Client 1" class="h-8 object-contain hover:grayscale-0 transition">
+                        <img src="assets/logo-2.png" alt="Client 2" class="h-8 object-contain hover:grayscale-0 transition">
+                        <img src="assets/logo-3.png" alt="Client 3" class="h-8 object-contain hover:grayscale-0 transition">
+                        <img src="assets/logo-4.png" alt="Client 4" class="h-8 object-contain hover:grayscale-0 transition">
                     </div>
                 </div>
             </div>
 
-            <!-- Right Content (Hero Image & Stats) -->
+            <!-- BAGIAN GAMBAR HERO 3D (Ganti hero-3d.png) -->
             <div class="lg:w-1/2 relative" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-                <!-- Main Image Placeholder (Ganti dengan gambar 3D asli) -->
                 <div class="relative w-full aspect-square max-w-lg mx-auto">
                     <div class="absolute inset-0 bg-gradient-to-tr from-orange-500 to-purple-600 rounded-full blur-[80px] opacity-40 animate-pulse"></div>
-                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop" alt="3D Abstract Web3" class="relative z-10 w-full h-full object-cover rounded-full border border-white/10 shadow-[0_0_50px_rgba(255,138,0,0.3)]">
                     
-                    <!-- Floating Stats Card 1 -->
+                    <!-- JIKA MAU PAKAI GAMBAR BIASA (PNG/JPG) -->
+                    <img src="assets/hero-3d.png" alt="Hero 3D Graphic" class="relative z-10 w-full h-full object-cover rounded-full border border-white/10 shadow-[0_0_50px_rgba(255,138,0,0.3)]">
+                    
+                    <!-- JIKA MAU PAKAI ANIMASI VIDEO (WEBM/MP4), HAPUS TAG <img> DI ATAS DAN UNCOMMENT KODE DI BAWAH INI:
+                    <video autoplay loop muted playsinline class="relative z-10 w-full h-full object-cover rounded-full border border-white/10 shadow-[0_0_50px_rgba(255,138,0,0.3)]">
+                        <source src="assets/hero-animation.webm" type="video/webm">
+                        <source src="assets/hero-animation.mp4" type="video/mp4">
+                    </video>
+                    -->
+                    
                     <div class="absolute top-10 -left-6 glass-card p-4 rounded-2xl z-20 animate-bounce" style="animation-duration: 3s;">
                         <div class="text-2xl font-bold text-white">240+</div>
                         <div class="text-xs text-gray-400">Projects Done</div>
                     </div>
-                    
-                    <!-- Floating Stats Card 2 -->
                     <div class="absolute bottom-10 -right-6 glass-card p-4 rounded-2xl z-20 animate-bounce" style="animation-duration: 4s;">
                         <div class="text-2xl font-bold text-orange-500">92%</div>
                         <div class="text-xs text-gray-400">Client Retention</div>
@@ -147,7 +104,7 @@
         </div>
     </section>
 
-    <!-- 3. TICKER / MARQUEE -->
+    <!-- TICKER -->
     <div class="bg-white/5 py-6 overflow-hidden border-y border-white/10 backdrop-blur-sm">
         <div class="marquee flex space-x-16 text-gray-400 font-semibold uppercase tracking-widest text-sm whitespace-nowrap">
             <span>Web Design</span> <span class="text-orange-500">✦</span>
@@ -158,51 +115,30 @@
             <span>Motion Design</span> <span class="text-orange-500">✦</span>
             <span>DeFi Platforms</span> <span class="text-orange-500">✦</span>
             <span>Metaverse</span> <span class="text-orange-500">✦</span>
-            <!-- Duplicate for seamless loop -->
-            <span>Web Design</span> <span class="text-orange-500">✦</span>
-            <span>Dashboard UI</span> <span class="text-orange-500">✦</span>
-            <span>NFT ART</span> <span class="text-orange-500">✦</span>
-            <span>Smart Contracts</span> <span class="text-orange-500">✦</span>
-            <span>Tokenomics</span> <span class="text-orange-500">✦</span>
-            <span>Motion Design</span> <span class="text-orange-500">✦</span>
-            <span>DeFi Platforms</span> <span class="text-orange-500">✦</span>
-            <span>Metaverse</span> <span class="text-orange-500">✦</span>
         </div>
     </div>
 
-    <!-- 4. SERVICES SECTION -->
+    <!-- SERVICES SECTION -->
     <section id="services" class="py-24 px-6 max-w-7xl mx-auto">
         <div class="text-center mb-16" data-aos="fade-up">
             <h2 class="text-4xl md:text-5xl font-bold mb-4">Our <span class="gradient-text">Services</span></h2>
             <p class="text-gray-400 max-w-2xl mx-auto">Kami menyediakan solusi end-to-end untuk membangun ekosistem Web3 Anda dari nol hingga siap diluncurkan.</p>
         </div>
-
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Service 1 -->
             <div class="glass-card p-8 rounded-3xl group" data-aos="fade-up" data-aos-delay="100">
-                <div class="w-14 h-14 rounded-2xl bg-orange-500/20 flex items-center justify-center text-orange-500 text-2xl mb-6 group-hover:scale-110 transition">
-                    <i class="fa-solid fa-pen-nib"></i>
-                </div>
+                <div class="w-14 h-14 rounded-2xl bg-orange-500/20 flex items-center justify-center text-orange-500 text-2xl mb-6 group-hover:scale-110 transition"><i class="fa-solid fa-pen-nib"></i></div>
                 <h3 class="text-xl font-bold mb-3">UI/UX Design</h3>
                 <p class="text-gray-400 text-sm mb-6 leading-relaxed">Desain antarmuka yang memukau dan pengalaman pengguna yang mulus untuk aplikasi Web3 Anda.</p>
                 <a href="#" class="text-orange-500 text-sm font-semibold flex items-center gap-2 hover:gap-3 transition-all">Learn More <i class="fa-solid fa-arrow-right"></i></a>
             </div>
-
-            <!-- Service 2 -->
             <div class="glass-card p-8 rounded-3xl group" data-aos="fade-up" data-aos-delay="200">
-                <div class="w-14 h-14 rounded-2xl bg-pink-500/20 flex items-center justify-center text-pink-500 text-2xl mb-6 group-hover:scale-110 transition">
-                    <i class="fa-solid fa-code"></i>
-                </div>
+                <div class="w-14 h-14 rounded-2xl bg-pink-500/20 flex items-center justify-center text-pink-500 text-2xl mb-6 group-hover:scale-110 transition"><i class="fa-solid fa-code"></i></div>
                 <h3 class="text-xl font-bold mb-3">Web3 Development</h3>
                 <p class="text-gray-400 text-sm mb-6 leading-relaxed">Pengembangan smart contract, DApp, dan integrasi blockchain yang aman, cepat, dan terukur.</p>
                 <a href="#" class="text-pink-500 text-sm font-semibold flex items-center gap-2 hover:gap-3 transition-all">Learn More <i class="fa-solid fa-arrow-right"></i></a>
             </div>
-
-            <!-- Service 3 -->
             <div class="glass-card p-8 rounded-3xl group" data-aos="fade-up" data-aos-delay="300">
-                <div class="w-14 h-14 rounded-2xl bg-purple-500/20 flex items-center justify-center text-purple-500 text-2xl mb-6 group-hover:scale-110 transition">
-                    <i class="fa-solid fa-cubes"></i>
-                </div>
+                <div class="w-14 h-14 rounded-2xl bg-purple-500/20 flex items-center justify-center text-purple-500 text-2xl mb-6 group-hover:scale-110 transition"><i class="fa-solid fa-cubes"></i></div>
                 <h3 class="text-xl font-bold mb-3">NFT & Metaverse</h3>
                 <p class="text-gray-400 text-sm mb-6 leading-relaxed">Pembuatan aset digital 3D, koleksi NFT generatif, dan pembangunan dunia metaverse yang imersif.</p>
                 <a href="#" class="text-purple-500 text-sm font-semibold flex items-center gap-2 hover:gap-3 transition-all">Learn More <i class="fa-solid fa-arrow-right"></i></a>
@@ -210,7 +146,7 @@
         </div>
     </section>
 
-    <!-- 5. PORTFOLIO SECTION -->
+    <!-- PORTFOLIO SECTION -->
     <section id="portfolio" class="py-24 px-6 bg-white/[0.02]">
         <div class="max-w-7xl mx-auto">
             <div class="flex justify-between items-end mb-12" data-aos="fade-up">
@@ -220,68 +156,99 @@
                 </div>
                 <button class="hidden md:block glass-card px-6 py-2 rounded-full text-sm hover:bg-white/10 transition">View All Projects</button>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Project 1 -->
+                <!-- Ganti portfolio-1.jpg -->
                 <div class="relative group rounded-3xl overflow-hidden aspect-video" data-aos="fade-up" data-aos-delay="100">
-                    <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=2832&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Project 1">
+                    <img src="assets/portfolio-1.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Project 1">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition duration-500 flex flex-col justify-end p-8">
                         <span class="text-orange-500 text-xs font-bold uppercase tracking-wider mb-2">DeFi Platform</span>
                         <h3 class="text-2xl font-bold text-white mb-2">Nexus Swap Dashboard</h3>
                         <p class="text-gray-300 text-sm">UI/UX Design & Frontend Development</p>
                     </div>
                 </div>
-
-                <!-- Project 2 -->
+                <!-- Ganti portfolio-2.jpg -->
                 <div class="relative group rounded-3xl overflow-hidden aspect-video" data-aos="fade-up" data-aos-delay="200">
-                    <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=2874&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Project 2">
+                    <img src="assets/portfolio-2.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Project 2">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition duration-500 flex flex-col justify-end p-8">
                         <span class="text-pink-500 text-xs font-bold uppercase tracking-wider mb-2">NFT Marketplace</span>
                         <h3 class="text-2xl font-bold text-white mb-2">CryptoArt Gallery</h3>
                         <p class="text-gray-300 text-sm">Smart Contract & Web3 Integration</p>
                     </div>
                 </div>
+                <!-- Ganti portfolio-3.jpg -->
+                <div class="relative group rounded-3xl overflow-hidden aspect-video" data-aos="fade-up" data-aos-delay="300">
+                    <img src="assets/portfolio-3.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Project 3">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition duration-500 flex flex-col justify-end p-8">
+                        <span class="text-purple-500 text-xs font-bold uppercase tracking-wider mb-2">Metaverse</span>
+                        <h3 class="text-2xl font-bold text-white mb-2">Virtual Land Market</h3>
+                        <p class="text-gray-300 text-sm">3D Environment Design</p>
+                    </div>
+                </div>
+                <!-- Ganti portfolio-4.jpg -->
+                <div class="relative group rounded-3xl overflow-hidden aspect-video" data-aos="fade-up" data-aos-delay="400">
+                    <img src="assets/portfolio-4.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Project 4">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition duration-500 flex flex-col justify-end p-8">
+                        <span class="text-blue-500 text-xs font-bold uppercase tracking-wider mb-2">Wallet App</span>
+                        <h3 class="text-2xl font-bold text-white mb-2">MetaWallet Mobile</h3>
+                        <p class="text-gray-300 text-sm">Mobile App UI/UX</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 6. STATS SECTION -->
+    <!-- STATS SECTION -->
     <section class="py-20 border-y border-white/10 bg-gradient-to-r from-orange-900/10 to-pink-900/10">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div data-aos="zoom-in" data-aos-delay="100">
-                <div class="text-4xl md:text-5xl font-bold mb-2 gradient-text">5M+</div>
-                <div class="text-gray-400 text-sm uppercase tracking-wider">Customers</div>
+            <div data-aos="zoom-in" data-aos-delay="100"><div class="text-4xl md:text-5xl font-bold mb-2 gradient-text">5M+</div><div class="text-gray-400 text-sm uppercase tracking-wider">Customers</div></div>
+            <div data-aos="zoom-in" data-aos-delay="200"><div class="text-4xl md:text-5xl font-bold mb-2 gradient-text">450M+</div><div class="text-gray-400 text-sm uppercase tracking-wider">Coverage</div></div>
+            <div data-aos="zoom-in" data-aos-delay="300"><div class="text-4xl md:text-5xl font-bold mb-2 gradient-text">22%</div><div class="text-gray-400 text-sm uppercase tracking-wider">Earning</div></div>
+            <div data-aos="zoom-in" data-aos-delay="400"><div class="text-4xl md:text-5xl font-bold mb-2 gradient-text">8.03%</div><div class="text-gray-400 text-sm uppercase tracking-wider">Interest</div></div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="py-24 px-6 max-w-7xl mx-auto">
+        <h2 class="text-4xl font-bold text-center mb-16" data-aos="fade-up">Our Happy <span class="gradient-text">Customers</span></h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Ganti avatar-1.jpg -->
+            <div class="glass-card p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="100">
+                <p class="text-gray-300 italic mb-6">"Tim ini luar biasa! Mereka mengubah ide NFT kami menjadi kenyataan dengan desain yang memukau."</p>
+                <div class="flex items-center">
+                    <img src="assets/avatar-1.jpg" alt="Alex Johnson" class="w-12 h-12 rounded-full mr-4 object-cover border-2 border-orange-500">
+                    <div><div class="font-bold">Alex Johnson</div><div class="text-xs text-gray-500">CEO, CryptoArt</div></div>
+                </div>
             </div>
-            <div data-aos="zoom-in" data-aos-delay="200">
-                <div class="text-4xl md:text-5xl font-bold mb-2 gradient-text">450M+</div>
-                <div class="text-gray-400 text-sm uppercase tracking-wider">Coverage</div>
+            <!-- Ganti avatar-2.jpg -->
+            <div class="glass-card p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="200">
+                <p class="text-gray-300 italic mb-6">"Pengembangan smart contract yang sangat aman dan profesional. Prosesnya transparan dari awal hingga akhir."</p>
+                <div class="flex items-center">
+                    <img src="assets/avatar-2.jpg" alt="Sarah Lee" class="w-12 h-12 rounded-full mr-4 object-cover border-2 border-pink-500">
+                    <div><div class="font-bold">Sarah Lee</div><div class="text-xs text-gray-500">Founder, DeFi Hub</div></div>
+                </div>
             </div>
-            <div data-aos="zoom-in" data-aos-delay="300">
-                <div class="text-4xl md:text-5xl font-bold mb-2 gradient-text">22%</div>
-                <div class="text-gray-400 text-sm uppercase tracking-wider">Earning</div>
-            </div>
-            <div data-aos="zoom-in" data-aos-delay="400">
-                <div class="text-4xl md:text-5xl font-bold mb-2 gradient-text">8.03%</div>
-                <div class="text-gray-400 text-sm uppercase tracking-wider">Interest</div>
+            <!-- Ganti avatar-3.jpg -->
+            <div class="glass-card p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="300">
+                <p class="text-gray-300 italic mb-6">"Desain UI/UX mereka meningkatkan retensi pengguna aplikasi kami hingga 40%. Sangat direkomendasikan!"</p>
+                <div class="flex items-center">
+                    <img src="assets/avatar-3.jpg" alt="Michael Chen" class="w-12 h-12 rounded-full mr-4 object-cover border-2 border-purple-500">
+                    <div><div class="font-bold">Michael Chen</div><div class="text-xs text-gray-500">CTO, MetaWallet</div></div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 7. PRICING SECTION -->
+    <!-- PRICING SECTION -->
     <section id="pricing" class="py-24 px-6 max-w-7xl mx-auto">
         <div class="text-center mb-16" data-aos="fade-up">
             <h2 class="text-4xl md:text-5xl font-bold mb-4">Transparent <span class="gradient-text">Pricing</span></h2>
             <p class="text-gray-400 max-w-2xl mx-auto mb-8">Pilih paket yang sesuai dengan kebutuhan bisnis Anda. Tidak ada biaya tersembunyi.</p>
-            
-            <!-- Toggle Monthly/Yearly -->
             <div class="inline-flex items-center glass-card rounded-full p-1">
                 <button id="btn-monthly" class="px-6 py-2 rounded-full text-sm font-semibold bg-white text-black transition">Monthly</button>
                 <button id="btn-yearly" class="px-6 py-2 rounded-full text-sm font-semibold text-gray-400 hover:text-white transition">Yearly <span class="text-orange-500 text-xs">(Save 20%)</span></button>
             </div>
         </div>
-
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-            <!-- Basic Plan -->
             <div class="glass-card p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="100">
                 <h3 class="text-xl font-bold mb-2">Starter</h3>
                 <p class="text-gray-400 text-sm mb-6">Cocok untuk project personal atau MVP.</p>
@@ -290,12 +257,9 @@
                     <li class="flex items-center"><i class="fa-solid fa-check text-orange-500 mr-3"></i> 1 Landing Page Design</li>
                     <li class="flex items-center"><i class="fa-solid fa-check text-orange-500 mr-3"></i> Responsive Mobile</li>
                     <li class="flex items-center"><i class="fa-solid fa-check text-orange-500 mr-3"></i> Basic SEO Setup</li>
-                    <li class="flex items-center text-gray-600"><i class="fa-solid fa-xmark mr-3"></i> Smart Contract Dev</li>
                 </ul>
                 <button class="w-full py-3 rounded-full border border-white/20 hover:bg-white/10 transition font-semibold">Choose Starter</button>
             </div>
-
-            <!-- Pro Plan (Highlighted) -->
             <div class="glass-card p-8 rounded-3xl border-orange-500/50 relative transform md:-translate-y-4 shadow-[0_0_40px_rgba(255,138,0,0.2)]" data-aos="fade-up" data-aos-delay="200">
                 <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-orange-500 to-pink-600 text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider">Most Popular</div>
                 <h3 class="text-xl font-bold mb-2">Professional</h3>
@@ -305,13 +269,10 @@
                     <li class="flex items-center"><i class="fa-solid fa-check text-orange-500 mr-3"></i> Full Website Design (5 Pages)</li>
                     <li class="flex items-center"><i class="fa-solid fa-check text-orange-500 mr-3"></i> Web3 Wallet Integration</li>
                     <li class="flex items-center"><i class="fa-solid fa-check text-orange-500 mr-3"></i> Smart Contract Development</li>
-                    <li class="flex items-center"><i class="fa-solid fa-check text-orange-500 mr-3"></i> Advanced SEO & Analytics</li>
                     <li class="flex items-center"><i class="fa-solid fa-check text-orange-500 mr-3"></i> Priority Support</li>
                 </ul>
                 <button class="btn-glow w-full py-3 rounded-full bg-gradient-to-r from-orange-500 to-pink-600 text-white font-semibold shadow-lg">Choose Professional</button>
             </div>
-
-            <!-- Enterprise Plan -->
             <div class="glass-card p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="300">
                 <h3 class="text-xl font-bold mb-2">Enterprise</h3>
                 <p class="text-gray-400 text-sm mb-6">Solusi kustom untuk skala besar.</p>
@@ -320,63 +281,44 @@
                     <li class="flex items-center"><i class="fa-solid fa-check text-orange-500 mr-3"></i> Unlimited Pages & Features</li>
                     <li class="flex items-center"><i class="fa-solid fa-check text-orange-500 mr-3"></i> Dedicated Development Team</li>
                     <li class="flex items-center"><i class="fa-solid fa-check text-orange-500 mr-3"></i> Custom Blockchain Integration</li>
-                    <li class="flex items-center"><i class="fa-solid fa-check text-orange-500 mr-3"></i> 24/7 Support & SLA</li>
                 </ul>
                 <button class="w-full py-3 rounded-full border border-white/20 hover:bg-white/10 transition font-semibold">Contact Sales</button>
             </div>
         </div>
     </section>
 
-    <!-- 8. FAQ SECTION -->
+    <!-- FAQ SECTION -->
     <section id="faq" class="py-24 px-6 max-w-4xl mx-auto">
         <div class="text-center mb-16" data-aos="fade-up">
             <h2 class="text-4xl font-bold mb-4">Frequently Asked <span class="gradient-text">Questions</span></h2>
-            <p class="text-gray-400">Pertanyaan yang sering diajukan klien kami.</p>
         </div>
-
         <div class="space-y-4" data-aos="fade-up" data-aos-delay="100">
-            <!-- FAQ Item 1 -->
             <details class="glass-card rounded-2xl p-6 group cursor-pointer">
-                <summary class="flex justify-between items-center font-semibold text-lg list-none">
-                    Berapa lama proses pengerjaan landing page?
-                    <span class="text-orange-500 group-open:rotate-180 transition-transform duration-300"><i class="fa-solid fa-chevron-down"></i></span>
-                </summary>
+                <summary class="flex justify-between items-center font-semibold text-lg list-none">Berapa lama proses pengerjaan landing page?<span class="text-orange-500 group-open:rotate-180 transition-transform duration-300"><i class="fa-solid fa-chevron-down"></i></span></summary>
                 <p class="text-gray-400 mt-4 text-sm leading-relaxed">Untuk landing page standar (seperti contoh ini), proses pengerjaan memakan waktu sekitar 7-14 hari kerja, tergantung pada kompleksitas fitur dan kecepatan feedback dari klien.</p>
             </details>
-
-            <!-- FAQ Item 2 -->
             <details class="glass-card rounded-2xl p-6 group cursor-pointer">
-                <summary class="flex justify-between items-center font-semibold text-lg list-none">
-                    Apakah harga sudah termasuk hosting dan domain?
-                    <span class="text-orange-500 group-open:rotate-180 transition-transform duration-300"><i class="fa-solid fa-chevron-down"></i></span>
-                </summary>
+                <summary class="flex justify-between items-center font-semibold text-lg list-none">Apakah harga sudah termasuk hosting dan domain?<span class="text-orange-500 group-open:rotate-180 transition-transform duration-300"><i class="fa-solid fa-chevron-down"></i></span></summary>
                 <p class="text-gray-400 mt-4 text-sm leading-relaxed">Harga yang tertera adalah biaya jasa desain dan development. Untuk hosting dan domain, kami dapat merekomendasikan penyedia terbaik atau mengaturnya atas nama Anda dengan biaya terpisah.</p>
             </details>
-
-            <!-- FAQ Item 3 -->
             <details class="glass-card rounded-2xl p-6 group cursor-pointer">
-                <summary class="flex justify-between items-center font-semibold text-lg list-none">
-                    Apakah bisa request fitur tambahan di luar paket?
-                    <span class="text-orange-500 group-open:rotate-180 transition-transform duration-300"><i class="fa-solid fa-chevron-down"></i></span>
-                </summary>
+                <summary class="flex justify-between items-center font-semibold text-lg list-none">Apakah bisa request fitur tambahan di luar paket?<span class="text-orange-500 group-open:rotate-180 transition-transform duration-300"><i class="fa-solid fa-chevron-down"></i></span></summary>
                 <p class="text-gray-400 mt-4 text-sm leading-relaxed">Tentu! Kami sangat fleksibel. Anda dapat memilih paket dasar dan menambahkan fitur kustom seperti integrasi wallet, smart contract, atau animasi 3D dengan biaya tambahan yang akan dihitung secara transparan.</p>
             </details>
         </div>
     </section>
 
-    <!-- 9. CTA SECTION -->
+    <!-- CTA SECTION -->
     <section class="py-24 px-6 relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-purple-600/20 -z-10"></div>
         <div class="max-w-4xl mx-auto glass-card rounded-3xl p-12 text-center border-white/10" data-aos="zoom-in">
             <h2 class="text-4xl md:text-5xl font-bold mb-6">Siap Membangun Masa Depan?</h2>
             <p class="text-gray-300 mb-8 max-w-xl mx-auto">Jangan biarkan ide brilian Anda tertinggal. Mari diskusikan bagaimana kami dapat membantu Anda mendominasi pasar Web3.</p>
-            <button class="btn-glow bg-gradient-to-r from-orange-500 to-pink-600 text-white px-10 py-4 rounded-full font-bold text-lg shadow-[0_0_30px_rgba(229,46,113,0.5)] hover:shadow-[0_0_50px_rgba(229,46,113,0.8)] transition">
-                Konsultasi Gratis Sekarang
-            </button>
+            <button class="btn-glow bg-gradient-to-r from-orange-500 to-pink-600 text-white px-10 py-4 rounded-full font-bold text-lg shadow-[0_0_30px_rgba(229,46,113,0.5)] hover:shadow-[0_0_50px_rgba(229,46,113,0.8)] transition">Konsultasi Gratis Sekarang</button>
         </div>
     </section>
 
-    <!-- 10. FOOTER -->
+    <!-- FOOTER -->
     <footer class="border-t border-white/10 pt-16 pb-8 px-6 bg-black">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div class="md:col-span-1">
@@ -425,49 +367,26 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Inisialisasi AOS (Animasi Scroll)
         AOS.init({ once: true, offset: 100 });
-
-        // Navbar Scroll Effect
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                nav.classList.add('py-2', 'bg-black/90');
-                nav.classList.remove('py-4');
-            } else {
-                nav.classList.remove('py-2', 'bg-black/90');
-                nav.classList.add('py-4');
-            }
+            if (window.scrollY > 50) { nav.classList.add('py-2', 'bg-black/90'); nav.classList.remove('py-4'); } 
+            else { nav.classList.remove('py-2', 'bg-black/90'); nav.classList.add('py-4'); }
         });
-
-        // Pricing Toggle Logic
         const btnMonthly = document.getElementById('btn-monthly');
         const btnYearly = document.getElementById('btn-yearly');
         const prices = document.querySelectorAll('.price');
-
         btnMonthly.addEventListener('click', () => {
-            btnMonthly.classList.add('bg-white', 'text-black');
-            btnMonthly.classList.remove('text-gray-400');
-            btnYearly.classList.remove('bg-white', 'text-black');
-            btnYearly.classList.add('text-gray-400');
-            
-            prices.forEach(price => {
-                price.textContent = price.getAttribute('data-monthly');
-            });
+            btnMonthly.classList.add('bg-white', 'text-black'); btnMonthly.classList.remove('text-gray-400');
+            btnYearly.classList.remove('bg-white', 'text-black'); btnYearly.classList.add('text-gray-400');
+            prices.forEach(price => { price.textContent = price.getAttribute('data-monthly'); });
         });
-
         btnYearly.addEventListener('click', () => {
-            btnYearly.classList.add('bg-white', 'text-black');
-            btnYearly.classList.remove('text-gray-400');
-            btnMonthly.classList.remove('bg-white', 'text-black');
-            btnMonthly.classList.add('text-gray-400');
-            
-            prices.forEach(price => {
-                price.textContent = price.getAttribute('data-yearly');
-            });
+            btnYearly.classList.add('bg-white', 'text-black'); btnYearly.classList.remove('text-gray-400');
+            btnMonthly.classList.remove('bg-white', 'text-black'); btnMonthly.classList.add('text-gray-400');
+            prices.forEach(price => { price.textContent = price.getAttribute('data-yearly'); });
         });
     </script>
 </body>
